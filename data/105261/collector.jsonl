@@ -1,0 +1,2 @@
+{"cpyKey": "105261", "timestamp": "2023-01-20T03:52:31", "applianceId": "CSP0009017243", "collectorName": "lok1", "collectorStatus": "Cisco Testing", "collectorVersion": "2.8.1.9", "expectedUploadInterval": 8, "lastUploadTimestamp": "2023-01-11T00:38:12"}
+{"cpyKey": "105261", "timestamp": "2023-01-20T03:52:31", "applianceId": "CSP0009031587", "collectorName": "bci2", "collectorStatus": "Cisco Testing", "collectorVersion": "2.8.1.8", "expectedUploadInterval": 8, "lastUploadTimestamp": "2023-01-18T21:12:23"}

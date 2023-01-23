@@ -1,0 +1,14 @@
+[props/cisco%3Aoi]
+owner = admin
+version = 8.2.6
+modtime = 1671161985.520517000
+
+[props/source%3A%3A...ta-oi%2A.log%2A]
+owner = admin
+version = 8.2.6
+modtime = 1671161985.998479000
+
+[props/source%3A%3A...ta_oi%2A.log%2A]
+owner = admin
+version = 8.2.6
+modtime = 1671161986.393715000

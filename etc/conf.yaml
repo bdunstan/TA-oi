@@ -1,0 +1,8 @@
+endpoints:
+  list:
+  file: endpoints.txt
+timeformat: "%Y-%m-%dT%H:%M:%S"
+directory:
+  csv: lookups
+  json: data
+
