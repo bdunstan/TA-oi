@@ -1,0 +1,4391 @@
+{
+  "swagger": "2.0",
+  "basePath": "/v2",
+  "paths": {
+    "/collectors": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfCollectors"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "List the collectors with their details.",
+        "operationId": "get_collectors",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example:{\"producttype\": \"LAN Switches\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separatedvalues, nested field between brackets. <br/>Example: items{devicename,productid,producttype},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "collectors"
+        ]
+      }
+    },
+    "/configBestPractices/details": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfDetails"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists the mapping between a Configuration Best Practice Rule and the device to which it is applicable.",
+        "operationId": "get_details",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON tosearch for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate, productid}},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "configurationBestPractices"
+        ]
+      }
+    },
+    "/configBestPractices/rules": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfRules"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists all the Configuration Best Practice Rules with their details.",
+        "operationId": "get_rules",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON tosearch for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate, productid}},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "configurationBestPractices"
+        ]
+      }
+    },
+    "/configBestPractices/rulesReferences": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfRulesReferences"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists documentation references for the Configuration Best Practice Rules.",
+        "operationId": "get_rules_ref",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON tosearch for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate, productid}},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "configurationBestPractices"
+        ]
+      }
+    },
+    "/configBestPractices/summary": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfCBPSummary"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists an aggregation of the Configuration Best Practice Rules and number of devices this rule was applicable to.",
+        "operationId": "get_summary",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON tosearch for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate, productid}},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "configurationBestPractices"
+        ]
+      }
+    },
+    "/contract/serials": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfSerials"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists contract information for each serial number.",
+        "operationId": "get_serials",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example:items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "contract"
+        ]
+      }
+    },
+    "/deviceGroups/groupMembers": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/groupMembers"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists the device members of each logical device group.",
+        "operationId": "get_device_group_members",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example: {\"groupId\": 1234}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{groupId,groupName},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "deviceGroups"
+        ]
+      }
+    },
+    "/deviceGroups/groups": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists the logical device groups and their details.",
+        "operationId": "get_device_groups",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example: {\"groupId\": 1234}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{groupId,groupName},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "deviceGroups"
+        ]
+      }
+    },
+    "/deviceReset/lastResetDetails": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/latestResetModel"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists the last resets per device and details about the reset.",
+        "operationId": "get_device_latest_reset",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example: {\"producttype\": \"LAN Switches\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{devicename,productid,producttype},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "type": "string",
+            "description": "Type of reset. The allowed values are \"crash\" and \"reload\". If not specified then data for both reload and crash are shown",
+            "default": ""
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "type": "integer",
+            "description": "Days to look backward when fetching the data. If days is not specified then default value is 365",
+            "default": 365
+          }
+        ],
+        "tags": [
+          "deviceReset"
+        ]
+      }
+    },
+    "/deviceReset/resetCount": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Aggregate overview count of crashes and reloads.",
+        "operationId": "get_crash_reload_count",
+        "parameters": [
+          {
+            "name": "days",
+            "in": "query",
+            "type": "integer",
+            "description": "The number of days to show the data for",
+            "default": 365
+          }
+        ],
+        "tags": [
+          "deviceReset"
+        ]
+      }
+    },
+    "/deviceReset/resetHistory": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/resetHistoryModel"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists all the known resets per device.",
+        "operationId": "get_device_reset_history",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "type": "string",
+            "description": "The type of reset, either a \"crash\" or a \"reload\"",
+            "default": ""
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "type": "integer",
+            "description": "The number of days to show the data for",
+            "default": 365
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example: {\"producttype\": \"LAN Switches\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{deviceName,resetDetails{resetOccurence},page,pages,total <br/> If using mask for this api, \"resetDetails{resetOccurence}\" fields are mandatory",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "deviceReset"
+        ]
+      }
+    },
+    "/inventory/assets": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfAssets"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists asset details for all discovered assets.",
+        "operationId": "get_assets",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Queryfilter in JSON to search for specific fields. <br/>Example: {\"producttype\":  \"LAN Switches\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{devicename,productid,producttype}, page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "inventory"
+        ]
+      },
+      "head": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists asset details for all discovered assets.",
+        "operationId": "head_assets",
+        "tags": [
+          "inventory"
+        ]
+      }
+    },
+    "/inventory/devices": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfDevices"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists device details for all discovered devices.",
+        "operationId": "get_device_sum",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Queryfilter in JSON to search for specific fields. <br/>Example: {\"producttype\":  \"LAN Switches\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{devicename,productid,producttype}, page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "inventory"
+        ]
+      },
+      "head": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists device details for all discovered devices.",
+        "operationId": "head_device_sum",
+        "tags": [
+          "inventory"
+        ]
+      }
+    },
+    "/productAlerts/fieldNoticeBulletins": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfFieldNoticeBulletins"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists all known Field Notices with their details.",
+        "operationId": "get_fn_bulletins",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filterin JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/> Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}} ,page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "productAlerts"
+        ]
+      }
+    },
+    "/productAlerts/fieldNotices": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfFieldNotices"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists a mapping between all devices and all known field notices with information whetherthe device is vulnerable to this advisory.",
+        "operationId": "get_fn",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filterin JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/> Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}} ,page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "productAlerts"
+        ]
+      }
+    },
+    "/productAlerts/hardwareEndOfLife": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfHardwareEndOfLife"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists hardware End of Life information milestones for devices.",
+        "operationId": "get_hweox",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filterin JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/> Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}} ,page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "productAlerts"
+        ]
+      }
+    },
+    "/productAlerts/hardwareEndOfLifeBulletins": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfHardwareEndOfLifeBulletins"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists hardware End of Life milestones with their details.",
+        "operationId": "get_hweox_bulletins",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filterin JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/> Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}} ,page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "productAlerts"
+        ]
+      }
+    },
+    "/productAlerts/securityAdvisories": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfSecurityAdvisory"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists a mapping between all devices and all known security advisories with information whetherthe device is vulnerable to this advisory.",
+        "operationId": "get_psirt",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filterin JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/> Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}} ,page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "productAlerts"
+        ]
+      }
+    },
+    "/productAlerts/securityAdvisoryBulletins": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfSecurityAdvisoryBulletins"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists all known security advisories with their details.",
+        "operationId": "get_psirt_bulletins",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filterin JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/> Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}} ,page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "productAlerts"
+        ]
+      }
+    },
+    "/productAlerts/softwareAdvisoryAlerts": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfSoftwareAlerts"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists known software alerts for devices.",
+        "operationId": "get_sw_alerts",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filterin JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/> Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}} ,page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "productAlerts"
+        ]
+      }
+    },
+    "/productAlerts/softwareEndOfLife": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfSoftwareEndOfLife"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists software End of Life information for devices.",
+        "operationId": "get_sweox",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filterin JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/> Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}} ,page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "productAlerts"
+        ]
+      }
+    },
+    "/productAlerts/softwareEndOfLifeBulletins": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfSoftwareEndOfLifeBulletins"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists all known software End of Life milestones with their details.",
+        "operationId": "get_sweox_bulletins",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filterin JSON to search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/> Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,productid}} ,page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "productAlerts"
+        ]
+      }
+    },
+    "/riskMitigation/details": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfRiskMitigationDetails"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists risk insights for all devices.",
+        "operationId": "get_risk_mitigation_details_endpoint",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSONto search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,  productid}},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "riskMitigation"
+        ]
+      }
+    },
+    "/riskMitigation/summary": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/pageOfRiskMitigationSummary"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists aggregate risk details per product family.",
+        "operationId": "get_risk_mitigation_summary_endpoint",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSONto search for specific fields. <br/>Example: {\"physicaltype\":\"Module\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower theamount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{physicaltype,currenteoxmilestone,currenteoxmilestonedate,  productid}},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "riskMitigation"
+        ]
+      }
+    },
+    "/softwareTrack/members": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/trackMembersModel"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "device-level conformance details for the current and previous versions.",
+        "operationId": "get_tracking_members",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example:{\"producttype\": \"LAN Switches\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{devicename,productid,producttype},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "softwareTrack"
+        ]
+      }
+    },
+    "/softwareTrack/softwareMaintenanceUpgradeCompliance": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/complianceModel"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists Software Track Software Maintenance Update (SMU) and Package Installation Envelope (PIE) compliance status for each SMU/PIE on the device and the actions to be taken against each SMU/PIE on a device to achieve higher compliance.",
+        "operationId": "get_compliance",
+        "tags": [
+          "softwareTrack"
+        ]
+      }
+    },
+    "/softwareTrack/softwareMaintenanceUpgradeRecommendations": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/recommendationsModel"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists Software Maintenance Update (SMU) or Package Installation Envelope (PIE) recommended values defined for each of Current, Previous1, and Previous2 versions for applicable tracks.",
+        "operationId": "get_recomendations",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example:{\"producttype\": \"LAN Switches\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{devicename,productid,producttype},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "softwareTrack"
+        ]
+      }
+    },
+    "/softwareTrack/summary": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/summaryModel"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists software track summary information per software type.",
+        "operationId": "get_tracking_summary",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example:{\"producttype\": \"LAN Switches\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values, nested field between brackets. <br/>Example: items{devicename,productid,producttype},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "softwareTrack"
+        ]
+      }
+    },
+    "/syslog/daily": {
+      "get": {
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/syslogDailyModel"
+            },
+            "headers": {
+              "Etag": {
+                "description": "The RFC7232 ETag header",
+                "type": "string"
+              },
+              "TrackingId": {
+                "description": "Tracking ID for troubleshooting",
+                "type": "string"
+              },
+              "Date": {
+                "description": "Date of the response",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "Lists the syslog events seen on the network, how often they occurred, what devices are involved, and how severe the events seen are.",
+        "operationId": "get_syslog",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string",
+            "description": "Query filter in JSON to search for specific fields. <br/>Example: {\"producttype\": \"LAN Switches\"}",
+            "default": "{}"
+          },
+          {
+            "name": "mask",
+            "in": "query",
+            "type": "string",
+            "description": "Mask filter to lower the amount of fields returned, comma separated values,nested field between brackets. <br/>Example: items{devicename,productid,producttype},page,pages,total",
+            "default": "*"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "type": "integer",
+            "description": "Max number of items",
+            "default": 500
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Number of items skipped from the start",
+            "default": 0
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "type": "string",
+            "format": "date",
+            "description": "Records from exact day to be displayed, in format YYYY-MM-DD",
+            "default": ""
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "type": "string",
+            "format": "date-time",
+            "description": "Select records that are between two dates, if endDate parameter is not specified it will select data from given start date until now, format YYYY-MM-DDThh:mm:ss. If user passes argument without exact value  for each time unit it will assume lowest possible value, for example: date=2021-08 will be converted to date=2021-08-01T00:00:00:000",
+            "default": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "type": "string",
+            "format": "date-time",
+            "description": "End date of filter that selects data within certain range, format YYYY-MM-DDThh:mm:ss. If this parameter is passed, startDate parameter is required. If user passes argument without exact value  for each time unit it will assume lowest possible value, for example: date=2021-08 will be converted to date=2021-08-01T00:00:00:000",
+            "default": ""
+          }
+        ],
+        "tags": [
+          "syslog"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Business Critical Services Operational Insights API",
+    "version": "2.0"
+  },
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "inventory",
+      "description": "API Endpoints related to the inventory."
+    },
+    {
+      "name": "productAlerts",
+      "description": "API Endpoints related to product-alerts found in the network."
+    },
+    {
+      "name": "configurationBestPractices",
+      "description": "API Endpoints related to configuration best practice (CBP)."
+    },
+    {
+      "name": "syslog",
+      "description": "API Endpoint providing insights into syslog messages."
+    },
+    {
+      "name": "softwareTrack",
+      "description": "API Endpoints providing insights into what versions of software you are advised to run and how compliant your network is."
+    },
+    {
+      "name": "deviceReset",
+      "description": "API Endpoints providing insights into device crashes and reloads."
+    },
+    {
+      "name": "riskMitigation",
+      "description": "API Endpoints related to device risk mitigation."
+    },
+    {
+      "name": "deviceGroups",
+      "description": "API Endpoints related to logical device groups."
+    },
+    {
+      "name": "contract",
+      "description": "API Endpoints providing insights into the contract status."
+    },
+    {
+      "name": "collectors",
+      "description": "API Endpoints providing insights into the Cisco CSPC or OIC collectors you have enabled on your network."
+    }
+  ],
+  "definitions": {
+    "Error": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Error message",
+          "default": ""
+        },
+        "trackingId": {
+          "type": "string",
+          "description": "Tracking ID for troubleshooting",
+          "default": ""
+        }
+      },
+      "type": "object"
+    },
+    "pageOfDevices": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Device"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "Device": {
+      "properties": {
+        "collectorName": {
+          "type": "string",
+          "description": "The collector identifier, which can be either a 4four-character collectorId or the applianceId.",
+          "example": "bcs1"
+        },
+        "configRegister": {
+          "type": "string",
+          "description": "The Configuration register of the device.",
+          "example": "8450"
+        },
+        "configStatus": {
+          "type": "string",
+          "description": "The status of Configuration collection: - Completed means the config was successfully collected. - NotAvailable means the config was not collected. - NotSupported means the device does not support collection of an ASCii config via CLI.",
+          "example": "Completed"
+        },
+        "configTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the collector last successfully collected the configuration from the device.",
+          "example": "2022-01-01T20:03:23"
+        },
+        "createdTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp the record or rule was created.",
+          "example": "2016-04-15T21:43:1"
+        },
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "deviceIp": {
+          "type": "string",
+          "description": "The management IP address of the device.",
+          "example": "172.21.1.1"
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "The Network Element Name of the device.",
+          "example": "router%"
+        },
+        "deviceStatus": {
+          "type": "string",
+          "description": "The status of the device as reported by the collector. Usually will be either ACTIVE or DEVICE NOT REACHABLE.",
+          "example": "ACTIVE"
+        },
+        "deviceType": {
+          "type": "string",
+          "description": "The type of the device. Values include Managed Chassis, Managed Multi-Chassis, SDR, Contexts, and IOS-XR Admin.",
+          "example": "Managed Chassis"
+        },
+        "featureSetDescription": {
+          "type": "string",
+          "description": "The name of the software feature set running on the device. This data is primarily available for IOS.",
+          "example": "IP BASE W/O CRYPTO"
+        },
+        "imageName": {
+          "type": "string",
+          "description": "The Image Name of the software on the Network Element.",
+          "example": "C3560-IPBASE-M"
+        },
+        "isInSeedFile": {
+          "type": "boolean",
+          "description": "Indicates whether the device is in a collector seedfile (true) or has been logically created by the backend (false).",
+          "example": true
+        },
+        "inventoryStatus": {
+          "type": "string",
+          "description": "The status of Inventory collection: - Completed means some SNMP inventory was successfully collected. - NotAvailable means SNMP inventory was not collected. - NotSupported means the device was not in the collector list of devices to be collected.",
+          "example": "Completed"
+        },
+        "inventoryTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the collector last successfully collected inventory from the device.",
+          "example": "2022-01-16T21:20:35"
+        },
+        "ipAddress": {
+          "type": "string",
+          "description": "An IPv4 Address.",
+          "example": "172.16.1.1"
+        },
+        "lastResetTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of the last reset of the device as reported by the show version command.",
+          "example": "2021-05-07T21:23:11"
+        },
+        "productFamily": {
+          "type": "string",
+          "description": "The Cisco Product Family of the hardware.",
+          "example": "Cisco Catalyst 3560-E Series Switches"
+        },
+        "productId": {
+          "type": "string",
+          "description": "The Cisco Product ID (PID) of the hardware.",
+          "example": "NCS-5501"
+        },
+        "productType": {
+          "type": "string",
+          "description": "The Cisco Product Type of the hardware.",
+          "example": "Metro Ethernet Switches"
+        },
+        "resetReason": {
+          "type": "string",
+          "description": "The reason for the last system reset as reported in the show version output.",
+          "example": "Reset Requested by CLI command reload"
+        },
+        "softwareType": {
+          "type": "string",
+          "description": "The Type of Software running on the device. Common values include IOS, IOS XR, IOS-XE, NX-OS, etc.",
+          "example": "IOS-XR"
+        },
+        "softwareVersion": {
+          "type": "string",
+          "description": "The installed software version.",
+          "example": "15.1(4)M4"
+        },
+        "snmpSysName": {
+          "type": "string",
+          "description": "The hostname (SNMP sysName) of the device. It will be the fully-qualified name if the domain name is set on the device.",
+          "example": "router.cisco.com"
+        },
+        "snmpSysContact": {
+          "type": "string",
+          "description": "The SNMP sysContact of the device which is populated in most devices using a configuration command.",
+          "example": "snmp syscontact"
+        },
+        "snmpSysDescription": {
+          "type": "string",
+          "description": "The SNMP system description from the device.",
+          "example": "Cisco Integrated Management Controller(Cisco IMC) [DN1-HW-APL<NL>], Firmware Version 4.1(2f) Copyright (c) 2008-2020, Cisco Systems, Inc.\""
+        },
+        "snmpSysLocation": {
+          "type": "string",
+          "description": "The SNMP sysLocation of the device which is populated in most devices using a configuration command.",
+          "example": "snmp location"
+        },
+        "snmpSysObjectId": {
+          "type": "string",
+          "description": "The SNMP sysObjectID of the device.",
+          "example": "1.3.6.1.4.1.9.12.3.1.3.1106"
+        },
+        "userField1": {
+          "type": "string",
+          "description": "The user field 1 value populated in the collector seedfile.",
+          "example": "user field 1"
+        },
+        "userField2": {
+          "type": "string",
+          "description": "The user field 2 value populated in the collector seedfile.",
+          "example": "user field 2"
+        },
+        "userField3": {
+          "type": "string",
+          "description": "The user field 3 value populated in the collector seedfile.",
+          "example": "user field 3"
+        },
+        "userField4": {
+          "type": "string",
+          "description": "The user field 4 value populated in the collector seedfile.",
+          "example": "user field 4"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfAssets": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Asset"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "Asset": {
+      "properties": {
+        "chassisName": {
+          "type": "string",
+          "description": "The name of the chassis. This is useful to reference child hardware to its parent chassis in a multi-chassis setup.",
+          "example": "POD6_TOR_5501-2-LCC-0"
+        },
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "The Network Element Name of the device.",
+          "example": "router%"
+        },
+        "hardwareRevision": {
+          "type": "string",
+          "description": "The hardware revision.",
+          "example": "1.3"
+        },
+        "installedFlash": {
+          "type": "integer",
+          "description": "The amount of installed flash in the chassis (in megabytes).",
+          "example": 1024
+        },
+        "installedMemory": {
+          "type": "integer",
+          "description": "The amount of installed memory in the chassis (in megabytes).",
+          "example": 1024
+        },
+        "printedCircuitBoardName": {
+          "type": "string",
+          "description": "The printed circuit board (PCB) number of the hardware.",
+          "example": "73-9938-05"
+        },
+        "printedCircuitBoardRevision": {
+          "type": "string",
+          "description": "The printed circuit board (PCB) number revision of the hardware.",
+          "example": "B0"
+        },
+        "physicalAssetId": {
+          "type": "integer",
+          "description": "The unique identifier for the hardware.",
+          "example": 139163375
+        },
+        "physicalAssetSubtype": {
+          "type": "string",
+          "description": "For chassis physicalType. This field will indicate which are IP-PHONE, LWAP, or UCSB.",
+          "example": "IP-PHONE"
+        },
+        "physicalAssetType": {
+          "type": "string",
+          "description": "The physical type of the hardware. Valid values are: Chassis, Module, Power Supply, and Fan.",
+          "example": "Chassis"
+        },
+        "productFamily": {
+          "type": "string",
+          "description": "The Cisco Product Family of the hardware.",
+          "example": "Cisco Catalyst 3560-E Series Switches"
+        },
+        "productId": {
+          "type": "string",
+          "description": "The Cisco Product ID (PID) of the hardware.",
+          "example": "NCS-5501"
+        },
+        "productType": {
+          "type": "string",
+          "description": "The Cisco Product Type of the hardware.",
+          "example": "Metro Ethernet Switches"
+        },
+        "serialNumber": {
+          "type": "string",
+          "description": "The serial number of the hardware.",
+          "example": "IMC1932004M"
+        },
+        "serialNumberStatus": {
+          "type": "string",
+          "description": "The validation status of the Serial Number (SN) of the hardware: - VALID means the SN was found in Cisco Manufacturing or Contract Database. - INVALID means the SN was not found in either of those databses. - UNKNOWN means the SN validation has been completed. - N/A means the SN is null, so validation is not applicable.",
+          "example": "VALID"
+        },
+        "slot": {
+          "type": "string",
+          "description": "The slot where asset is located in the chassis.",
+          "example": "1/1/0"
+        },
+        "softwareVersion": {
+          "type": "string",
+          "description": "The installed software version.",
+          "example": "15.1(4)M4"
+        },
+        "topAssemblyNumber": {
+          "type": "string",
+          "description": "The Top Assembly Number (TAN) of the hardware.",
+          "example": "800-25952-06"
+        },
+        "topAssemblyNumberRevision": {
+          "type": "string",
+          "description": "The Top Assembly Number (TAN) Revision of the hardware.",
+          "example": "A0"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfSecurityAdvisory": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/securityAdvisories"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "securityAdvisories": {
+      "properties": {
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "matchConfidence": {
+          "type": "string",
+          "description": "The outcome whether or not this device is vulnerable to the Security Advisory. Possible values are: \"Vulnerable\", \"Potentially Vulnerable\" or \"Not Vulnerable\".",
+          "example": "Not Vulnerable"
+        },
+        "matchConfidenceReason": {
+          "type": "string",
+          "description": "The reason behind the match confidence result: explains why the device is vulnerable, not vulnerable or what data is missing causing a potentially vulnerable result.",
+          "example": "No Match on SW Version; Match on SW Type"
+        },
+        "securityAdvisoryColdId": {
+          "type": "integer",
+          "description": "The unique identifier of the Security Advisory.",
+          "example": 1645
+        }
+      },
+      "type": "object"
+    },
+    "pageOfSecurityAdvisoryBulletins": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PSIRTBulletins"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "PSIRTBulletins": {
+      "properties": {
+        "bulletinFirstPublishedTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the Security Advisory was first published to Cisco.com.",
+          "example": "2020-01-22T16:00:00"
+        },
+        "bulletinLastUpdatedTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the Security Advisory was last updated on Cisco.com.",
+          "example": "2020-02-19T18:42:41"
+        },
+        "bulletinMappingCaveat": {
+          "type": "string",
+          "description": "The Bulletin Mapping Caveat gives any explanations why the automation may need additional review by the customer.",
+          "example": "Manual efforts are required to confirm if an access control list (ACL) on an SNMP community to filter incoming SNMP requests to ensure that SNMP queries are performed only by trusted SNMP clients has been configured."
+        },
+        "bulletinSummary": {
+          "type": "string",
+          "description": "The summary of the Security Advisory.",
+          "example": "A vulnerability in the implementation of the Intermediate System-to-Intermediate System (IS-IS) routing protocol functionality in Cisco IOS XR Software could allow an authenticated, remote attacker to cause a denial of service (DoS) condition in the IS-IS process. The vulnerability is due to improper handling of a Simple Network Management Protocol (SNMP) request for specific Object Identifiers (OIDs) by the IS-IS process. An attacker could exploit this vulnerability by sending a crafted SNMP request to the affected device. A successful exploit could allow the attacker to cause a DoS condition in the IS-IS process. Cisco has released software updates that address this vulnerability. There are no workarounds that address this vulnerability."
+        },
+        "bulletinTitle": {
+          "type": "string",
+          "description": "The title of the Security Advisory.",
+          "example": "Cisco IOS XR Software Intermediate System-to-Intermediate System Denial of Service Vulnerability"
+        },
+        "bulletinUrl": {
+          "type": "string",
+          "description": "The Cisco.com URL for the Security Advisory.",
+          "example": "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20200122-ios-xr-dos"
+        },
+        "bulletinVersion": {
+          "type": "string",
+          "description": "The version of the Security Advisory.",
+          "example": "1.2"
+        },
+        "bugIds": {
+          "type": "string",
+          "description": "Comma-separated list of Cisco Bug IDs linked to the security advisory.",
+          "example": "CSCvr62342"
+        },
+        "cveIds": {
+          "type": "string",
+          "description": "Common Vulnerabilities and Exposures (CVE) Identifier of the Security Advisory.",
+          "example": "CVE-2019-1602"
+        },
+        "commonVulnerabilityScoringSystemBaseScore": {
+          "type": "string",
+          "description": "Common Vulnerability Scoring System (CVSS) Base Score of the Security Advisory.",
+          "example": "7.7"
+        },
+        "commonVulnerabilityScoringSystemTemporalScore": {
+          "type": "string",
+          "description": "Common Vulnerability Scoring System (CVSS) Temporal Score of the Security Advisory.",
+          "example": "6.4"
+        },
+        "securityAdvisoryId": {
+          "type": "string",
+          "description": "The identifier of a Security Advisory as available on Cisco.com.",
+          "example": "cisco-sa-20200122-ios-xr-dos"
+        },
+        "securityAdvisoryColdId": {
+          "type": "integer",
+          "description": "The unique identifier of the Security Advisory.",
+          "example": 1645
+        },
+        "securityImpactRating": {
+          "type": "string",
+          "description": "The Security Impact Rating (SIR) for Cisco Security Advisories.",
+          "example": "Critical"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfFieldNotices": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/fieldNotices"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "fieldNotices": {
+      "properties": {
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "fieldNoticeId": {
+          "type": "string",
+          "description": "Unique identifier of the Field Notice.",
+          "example": "22633"
+        },
+        "matchConfidence": {
+          "type": "string",
+          "description": "The outcome whether or not this device is vulnerable to the Field Notice, possible values are: \"Vulnerable\", \"Potentially Vulnerable\" or \"Not Vulnerable\".",
+          "example": "Missing: PCB Number; Match on PID; Manual Verification Required"
+        },
+        "matchConfidenceReason": {
+          "type": "string",
+          "description": "The reason behind the match confidence result: explains why the device is vulnerable, not vulnerable or what data is missing causing a potentially vulnerable result.",
+          "example": "No Match on SW Version; Match on SW Type"
+        },
+        "physicalAssetId": {
+          "type": "integer",
+          "description": "The unique identifier for the hardware.",
+          "example": 139163375
+        }
+      },
+      "type": "object"
+    },
+    "pageOfFieldNoticeBulletins": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FNBulletins"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "FNBulletins": {
+      "properties": {
+        "bulletinFirstPublishedTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the Security Advisory was first published to Cisco.com.",
+          "example": "2020-01-22T16:00:00"
+        },
+        "bulletinLastUpdatedTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the Security Advisory was last updated on Cisco.com.",
+          "example": "2020-02-19T18:42:41"
+        },
+        "bulletinMappingCaveat": {
+          "type": "string",
+          "description": "The Bulletin Mapping Caveat gives any explanations why the automation may need additional review by the customer.",
+          "example": "Manual efforts are required to confirm if an access control list (ACL) on an SNMP community to filter incoming SNMP requests to ensure that SNMP queries are performed only by trusted SNMP clients has been configured."
+        },
+        "bulletinTitle": {
+          "type": "string",
+          "description": "The title of the Security Advisory.",
+          "example": "Cisco IOS XR Software Intermediate System-to-Intermediate System Denial of Service Vulnerability"
+        },
+        "bulletinUrl": {
+          "type": "string",
+          "description": "The Cisco.com URL for the Security Advisory.",
+          "example": "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20200122-ios-xr-dos"
+        },
+        "fieldNoticeId": {
+          "type": "string",
+          "description": "Unique identifier of the Field Notice.",
+          "example": "22633"
+        },
+        "fieldNoticeType": {
+          "type": "string",
+          "description": "The type of the Field Notice. Valid values include: Hardware, Software, and other.",
+          "example": "Software"
+        },
+        "problemDescription": {
+          "type": "string",
+          "description": "The description of the Field Notice.",
+          "example": "The Carrier Routing System (CRS) linecards (listed in the Products Affected section) might fail to boot up after a software upgrade or other user action where the board requires a power cycle operation.\r\n\r\n"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfHardwareEndOfLife": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HWEOX"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "HWEOX": {
+      "properties": {
+        "currentEndOfLifeMilestone": {
+          "type": "string",
+          "description": "The current end-of-life milestone as calculated during the last profiling. If more than one milestone falls on the same date, the returned value will be a comma-separated list.",
+          "example": "EoSale"
+        },
+        "currentEndOfLifeMilestoneDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The date associated with the current end-of-life milestone.",
+          "example": "2021-04-15"
+        },
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "The Network Element Name of the device.",
+          "example": "router%"
+        },
+        "hardwareEndOfLifeId": {
+          "type": "integer",
+          "description": "Unique identifier of the hardware end-of-life milestone."
+        },
+        "nextEndOfLifeMilestone": {
+          "type": "string",
+          "description": "The next end-of-life milestone that is coming up as calculated during the last profiling. If more than one milestone falls on the same date, the returned value will be a comma-separated list. If the device is already past Last Day of Support (LDoS) it will not have a next milestone.",
+          "example": "LDoS"
+        },
+        "nextEndOfLifeMilestoneDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The date associated with the next end-of-life milestone.",
+          "example": "2023-01-16"
+        },
+        "physicalAssetId": {
+          "type": "integer",
+          "description": "The unique identifier for the hardware.",
+          "example": 139163375
+        },
+        "physicalAssetType": {
+          "type": "string",
+          "description": "The physical type of the hardware. Valid values are: Chassis, Module, Power Supply, and Fan.",
+          "example": "Chassis"
+        },
+        "productId": {
+          "type": "string",
+          "description": "The Cisco Product ID (PID) of the hardware.",
+          "example": "NCS-5501"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfHardwareEndOfLifeBulletins": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HWEOXBulletins"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "HWEOXBulletins": {
+      "properties": {
+        "bulletinNumber": {
+          "type": "string",
+          "description": "The Cisco.com bulletin number for an End-of-Life bulletin or Field Notice.",
+          "example": "EOL9958"
+        },
+        "bulletinTitle": {
+          "type": "string",
+          "description": "The title of the Security Advisory.",
+          "example": "Cisco IOS XR Software Intermediate System-to-Intermediate System Denial of Service Vulnerability"
+        },
+        "bulletinUrl": {
+          "type": "string",
+          "description": "The Cisco.com URL for the Security Advisory.",
+          "example": "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20200122-ios-xr-dos"
+        },
+        "endOfLifeAnnouncementDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Life Announcement (Announced) Date.",
+          "example": "2007-04-24"
+        },
+        "endOfNewServiceAttachmentDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End of New Service Attachment Date.",
+          "example": "2009-01-25"
+        },
+        "endOfRoutineFailureAnalysisDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Routine Failure Analysis Date (EoRFA) Date.",
+          "example": "2009-01-25"
+        },
+        "endOfSaleDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Sale (EoSale) Date.",
+          "example": "2008-01-25"
+        },
+        "endOfVulnerabilitySecuritySupportDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Vulnerability/Security Support (EoVSS) Date.",
+          "example": "2014-04-24"
+        },
+        "endOfServiceContractRenewalDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Service Contract Renewal (EoSCR) Date.",
+          "example": "2012-04-24"
+        },
+        "endOfSoftwareMaintenanceReleasesDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Software Maintenance Releases (EoSWM) Date.",
+          "example": "2013-04-24"
+        },
+        "hardwareEndOfLifeId": {
+          "type": "integer",
+          "description": "Unique identifier of the hardware end-of-life milestone."
+        },
+        "lastDayOfSupportDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The Last Date of Support (LDoS).",
+          "example": "2013-01-31"
+        },
+        "lastShipDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The Last Ship Date.",
+          "example": "2008-04-25"
+        },
+        "productId": {
+          "type": "string",
+          "description": "The Cisco Product ID (PID) of the hardware.",
+          "example": "NCS-5501"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfSoftwareEndOfLife": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/softwareEOX"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "softwareEOX": {
+      "properties": {
+        "currentEndOfLifeMilestone": {
+          "type": "string",
+          "description": "The current end-of-life milestone as calculated during the last profiling. If more than one milestone falls on the same date, the returned value will be a comma-separated list.",
+          "example": "EoSale"
+        },
+        "currentEndOfLifeMilestoneDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The date associated with the current end-of-life milestone.",
+          "example": "2021-04-15"
+        },
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "The Network Element Name of the device.",
+          "example": "router%"
+        },
+        "nextEndOfLifeMilestone": {
+          "type": "string",
+          "description": "The next end-of-life milestone that is coming up as calculated during the last profiling. If more than one milestone falls on the same date, the returned value will be a comma-separated list. If the device is already past Last Day of Support (LDoS) it will not have a next milestone.",
+          "example": "LDoS"
+        },
+        "nextEndOfLifeMilestoneDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The date associated with the next end-of-life milestone.",
+          "example": "2023-01-16"
+        },
+        "softwareEndOfLifeId": {
+          "type": "integer",
+          "description": "Unique identifier of the software end-of-life milestone.",
+          "example": 1152
+        },
+        "softwareType": {
+          "type": "string",
+          "description": "The Type of Software running on the device. Common values include IOS, IOS XR, IOS-XE, NX-OS, etc.",
+          "example": "IOS-XR"
+        },
+        "softwareVersion": {
+          "type": "string",
+          "description": "The installed software version.",
+          "example": "15.1(4)M4"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfSoftwareEndOfLifeBulletins": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SWEOXBulletins"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "SWEOXBulletins": {
+      "properties": {
+        "bulletinNumber": {
+          "type": "string",
+          "description": "The Cisco.com bulletin number for an End-of-Life bulletin or Field Notice.",
+          "example": "EOL9958"
+        },
+        "bulletinTitle": {
+          "type": "string",
+          "description": "The title of the Security Advisory.",
+          "example": "Cisco IOS XR Software Intermediate System-to-Intermediate System Denial of Service Vulnerability"
+        },
+        "bulletinUrl": {
+          "type": "string",
+          "description": "The Cisco.com URL for the Security Advisory.",
+          "example": "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20200122-ios-xr-dos"
+        },
+        "endOfLifeAnnouncementDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Life Announcement (Announced) Date.",
+          "example": "2007-04-24"
+        },
+        "endOfSaleDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Sale (EoSale) Date.",
+          "example": "2008-01-25"
+        },
+        "endOfVulnerabilitySecuritySupportDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Vulnerability/Security Support (EoVSS) Date.",
+          "example": "2014-04-24"
+        },
+        "endOfSoftwareMaintenanceReleasesDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The End-of-Software Maintenance Releases (EoSWM) Date.",
+          "example": "2013-04-24"
+        },
+        "lastDayOfSupportDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The Last Date of Support (LDoS).",
+          "example": "2013-01-31"
+        },
+        "softwareEndOfLifeId": {
+          "type": "integer",
+          "description": "Unique identifier of the software end-of-life milestone.",
+          "example": 1152
+        },
+        "softwareMaintenanceVersion": {
+          "type": "string",
+          "description": "The maintenance version portion of the software version. For example, in 12.4(21), it is \"21\".",
+          "example": "21"
+        },
+        "softwareMajorVersion": {
+          "type": "string",
+          "description": "The major version portion of the software version.",
+          "example": "15.2"
+        },
+        "softwareTrain": {
+          "type": "string",
+          "description": "The Software Train, typically only applies to IOS.",
+          "example": "SXF"
+        },
+        "softwareType": {
+          "type": "string",
+          "description": "The Type of Software running on the device. Common values include IOS, IOS XR, IOS-XE, NX-OS, etc.",
+          "example": "IOS-XR"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfSoftwareAlerts": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/softwareAlerts"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "softwareAlerts": {
+      "properties": {
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "The Network Element Name of the device.",
+          "example": "router%"
+        },
+        "imageName": {
+          "type": "string",
+          "description": "The Image Name of the software on the Network Element.",
+          "example": "C3560-IPBASE-M"
+        },
+        "softwareAlertType": {
+          "type": "string",
+          "description": "The type of Software Alert on the device. Valid values include SA for Software Advisory and DF for Deferral.",
+          "example": "DF"
+        },
+        "softwareAlertUrl": {
+          "type": "string",
+          "description": "The Cisco.com URL with details for a specific software advisory or deferral.",
+          "example": "http://www.cisco.com/web/software/DefTracker/280805679/DT/ac102516.html"
+        },
+        "softwareType": {
+          "type": "string",
+          "description": "The Type of Software running on the device. Common values include IOS, IOS XR, IOS-XE, NX-OS, etc.",
+          "example": "IOS-XR"
+        },
+        "softwareVersion": {
+          "type": "string",
+          "description": "The installed software version.",
+          "example": "15.1(4)M4"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfCBPSummary": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CBPSummary"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "CBPSummary": {
+      "properties": {
+        "bestPracticeNuggetId": {
+          "type": "integer",
+          "description": "The unique identifier of the Configuration Best Practice nugget.",
+          "example": 544557
+        },
+        "bestPracticePrimaryTechnology": {
+          "type": "string",
+          "description": "The Primary Technology associated with a Configuration Best Practice rule.",
+          "example": "*Security and VPN"
+        },
+        "bestPracticeRisk": {
+          "type": "string",
+          "description": "The Risk associated with a Configuration Best Practice rule. Valid values include: High, Medium, Low.",
+          "example": "Low"
+        },
+        "bestPracticeRuleId": {
+          "type": "integer",
+          "description": "The unique identifier of the Configuration Best Practice rule.",
+          "example": 7262
+        },
+        "bestPracticeSecondaryTechnology": {
+          "type": "string",
+          "description": "The Secondary Technologies associated with a Configuration Best Practice rule. Can be multiple values separated with commas.",
+          "example": "*Security and VPN"
+        },
+        "bestPracticeTitle": {
+          "type": "string",
+          "description": "The Configuration Best Practice title.",
+          "example": "IPv4 ICMP Unreachables Enabled on All Interfaces"
+        },
+        "softwareType": {
+          "type": "string",
+          "description": "The Type of Software running on the device. Common values include IOS, IOS XR, IOS-XE, NX-OS, etc.",
+          "example": "IOS-XR"
+        },
+        "totalDeviceCount": {
+          "type": "integer",
+          "description": "The number of unique matching devices in summary APIs. For Custom Config and BP, this is the number of devices with exceptions. For Feature, this is the number of devices with the feature match. For tracks, this is the total number of devices in the track.For groups, this denotes number of devices in a group",
+          "example": ""
+        }
+      },
+      "type": "object"
+    },
+    "pageOfDetails": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CBPDetails"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "CBPDetails": {
+      "properties": {
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "bestPracticeNuggetId": {
+          "type": "integer",
+          "description": "The unique identifier of the Configuration Best Practice nugget.",
+          "example": 544557
+        },
+        "bestPracticeRuleId": {
+          "type": "integer",
+          "description": "The unique identifier of the Configuration Best Practice rule.",
+          "example": 7262
+        },
+        "configSource": {
+          "type": "string",
+          "description": "The source of a Configuration file. The primary source will be \"STANDARD\". But in some devices, it might be \"CONTEXT\" or \"ADMIN\".",
+          "example": "STANDARD"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfRulesReferences": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CBPRulesReferences"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "CBPRulesReferences": {
+      "properties": {
+        "bestPracticeRuleId": {
+          "type": "integer",
+          "description": "The unique identifier of the Configuration Best Practice rule.",
+          "example": 7262
+        },
+        "bestPracticeUrl": {
+          "type": "string",
+          "description": "The Configuration Best Practice reference URL. Any rule can have one or more reference URLs.",
+          "example": "http://www.cisco.com/en/US/docs/ios_xr_sw/iosxr_r3.4/addr_serv/command/reference/ir34ntsk.html#wpmkr1151266"
+        },
+        "bestPracticeUrlTitle": {
+          "type": "string",
+          "description": "The Configuration Best Practice reference URL Title.",
+          "example": "ipv4 unreachables disable"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfRules": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CBPRules"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "CBPRules": {
+      "properties": {
+        "bestPracticeCaveat": {
+          "type": "string",
+          "description": "The Caveat associated with a Configuration Best Practice rule.",
+          "example": "The network administrator may want to permit ICMP unreachable messages in certain environments. For example, ICMP type 3, code 1; code 3; and code 4 are required for the SMTP e-mail gateway, Path MTU discovery, etc."
+        },
+        "bestPracticeCorrectiveAction": {
+          "type": "string",
+          "description": "The Corrective Action associated with a Configuration Best Practice rule.",
+          "example": "interface interface_name_number\nsnip\nipv4 unreachables disable\n!"
+        },
+        "bestPracticeDescription": {
+          "type": "string",
+          "description": "The Description of the Configuration Best Practice rule.",
+          "example": "If the Cisco IOS XR software receives a non-broadcast packet destined for itself that uses a protocol it does not recognize, it sends an ICMP unreachable message to the source. Also, if the software receives a datagram that it cannot deliver to its ultimate destination because it knows of no route to the destination address, it replies to the originator of that datagram with an ICMP host unreachable message. The ipv4 unreachables command affects all types of ICMP unreachable messages and is enabled by default in support of RFC 792. However, ICMP unreachables can potentially be used to map a network by correlating which addresses generate ICMP unreachables and which do not for networks, hosts, protocols, and ports."
+        },
+        "bestPracticeNuggetId": {
+          "type": "integer",
+          "description": "The unique identifier of the Configuration Best Practice nugget.",
+          "example": 544557
+        },
+        "bestPracticePrimaryTechnology": {
+          "type": "string",
+          "description": "The Primary Technology associated with a Configuration Best Practice rule.",
+          "example": "*Security and VPN"
+        },
+        "bestPracticeRecommendation": {
+          "type": "string",
+          "description": "The Recommendation associated with a Configuration Best Practice rule.",
+          "example": "Control ICMP unreachable responses in certain environments, especially along untrusted edges between administrative domains, with the interface command ipv4 unreachables disable on affected interfaces. ICMP unreachables covers network, host, protocol, and port unreachable messages. Also, in IOS XR software, the ICMP unreachable messages are rate-limited default. The default value is one ICMP destination unreachable message every 500 milliseconds. Using the configuration command icmp ipv4 rate-limit unreachable [DF] milliseconds."
+        },
+        "bestPracticeRisk": {
+          "type": "string",
+          "description": "The Risk associated with a Configuration Best Practice rule. Valid values include: High, Medium, Low.",
+          "example": "Low"
+        },
+        "bestPracticeRuleId": {
+          "type": "integer",
+          "description": "The unique identifier of the Configuration Best Practice rule.",
+          "example": 7262
+        },
+        "bestPracticeSecondaryTechnology": {
+          "type": "string",
+          "description": "The Secondary Technologies associated with a Configuration Best Practice rule. Can be multiple values separated with commas.",
+          "example": "*Security and VPN"
+        },
+        "bestPracticeTitle": {
+          "type": "string",
+          "description": "The Configuration Best Practice title.",
+          "example": "IPv4 ICMP Unreachables Enabled on All Interfaces"
+        },
+        "createdTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp the record or rule was created.",
+          "example": "2016-04-15T21:43:1"
+        },
+        "softwareType": {
+          "type": "string",
+          "description": "The Type of Software running on the device. Common values include IOS, IOS XR, IOS-XE, NX-OS, etc.",
+          "example": "IOS-XR"
+        },
+        "bestPracticeRuleModificationTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the data or rule was last updated.",
+          "example": "2016-04-15T21:43:1"
+        }
+      },
+      "type": "object"
+    },
+    "syslogDailyModel": {
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime when the feedback was provided",
+          "example": ""
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of insertion.",
+          "example": "2010-01-01"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the signature",
+          "example": "The TACACS+ server switchover has failed.\n\n"
+        },
+        "reviewedSeverity": {
+          "type": "integer",
+          "description": "The severity of the signature",
+          "example": 4
+        },
+        "messageType": {
+          "type": "string",
+          "description": "The syslog message type",
+          "example": "AAA-4-TPLUS_SWITCHOVER_FAILED"
+        },
+        "recommendation": {
+          "type": "string",
+          "description": "The recommended action to take to solve or mitigate the issue detected by the signature",
+          "example": "Verify the necessary configuration needed for switchover. Reach out to TAC for more support"
+        },
+        "syslogEventSeverity": {
+          "type": "integer",
+          "description": "The syslog message severity",
+          "example": 4
+        },
+        "devices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/devices"
+          }
+        },
+        "totalEventCount": {
+          "type": "integer",
+          "description": "The number of times the signature was identified across all devices",
+          "example": 1
+        }
+      },
+      "type": "object"
+    },
+    "devices": {
+      "properties": {
+        "deviceName": {
+          "type": "string",
+          "description": "The hostname or ip of the device",
+          "example": "172.21.1.1"
+        },
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "eventCount": {
+          "type": "integer",
+          "description": "The number of times the signature was triggered on a given device",
+          "example": 10
+        }
+      },
+      "type": "object"
+    },
+    "summaryModel": {
+      "properties": {
+        "softwareTrackUpgradeReason": {
+          "type": "string",
+          "description": "The reason for the last change in software recommendation as defined in the software track.Values include New Software Implementation, Planned Maintenance, etc.",
+          "example": "New Software Implementation"
+        },
+        "softwareTrackTotalVersionCount": {
+          "type": "integer",
+          "description": "Total number of unique software versions in the Software Track.",
+          "example": 1
+        },
+        "softwareTrackTotalDeviceCount": {
+          "type": "integer",
+          "description": "Total number of devices in the Software Track.",
+          "example": 10
+        },
+        "softwareTrackStatus": {
+          "type": "string",
+          "description": "The status of the code deployment, as defined in the Software Track. Values include Fully Deployed, In Migration, etc.",
+          "example": "Fully Deployed"
+        },
+        "softwareTrackStandardVersion": {
+          "type": "string",
+          "description": "The current recommended standard version for the Software Track.",
+          "example": "3.2(2l)"
+        },
+        "softwareTrackStandardSoftwareMaintenanceUpdateCriteria": {
+          "type": "string",
+          "description": "The Software Maintenance Update (SMU) matching criteria for the recommended standard version for the Software Track. Valid values include:  Require Exact Match, Ignore For Conformance, and Match but ignore extras.",
+          "example": "Require Exact Match"
+        },
+        "softwareTrackStandardSoftwareMaintenanceUpdateCount": {
+          "type": "integer",
+          "description": "The number of Software Maintenance Updates (SMUs) in the Standard Recommendation for the track.",
+          "example": 0
+        },
+        "softwareTrackStandardPackageInstallationEnvelopeCriteria": {
+          "type": "string",
+          "description": "The Package Installation Envelope (PIE) matching criteria for the recommended standard version for the Software Track. Valid values include: Require Exact Match, Ignore For Conformance, and Match but ignore extras.",
+          "example": "Require Exact Match"
+        },
+        "softwareTrackSoftwareMaintenanceUpdateCompliancePercent": {
+          "type": "number",
+          "description": "The overall compliance percentage of the devices to the recommended Software Maintenance Update (SMU) list. Extra SMUs are ignored for the calculation.",
+          "example": 100
+        },
+        "softwareTrackRecommendationDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The date when the last software recommendation was made. This is manually set by the user in the Software Track. This is used to measure the age of the recommendation.",
+          "example": "2021-09-01"
+        },
+        "softwareTrackRating": {
+          "type": "string",
+          "description": "The rating of the track compliance. Results depend on whether account is using Absolute Compliance (default) or Flexible Compliance. For Absolute, %Compliant 90 and above is Good, 60-90 is Fair, and below 60 is Poor. For Flexible, it is the same thresholds, but %FlexibleCompliant is used.",
+          "example": ""
+        },
+        "softwareTrackPreviousVersion2": {
+          "type": "string",
+          "description": "The second previous recommended standard version for the Software Track.",
+          "example": "6.0(2)U1(2)"
+        },
+        "softwareTrackPreviousVersion1": {
+          "type": "string",
+          "description": "The previous recommended standard version for the Software Track.",
+          "example": "7.0(3)I4(6)"
+        },
+        "softwareTrackPreviousCompliantDeviceCount": {
+          "type": "integer",
+          "description": "Total number of devices in the Software Track that are running one of the two previous recommended versions.",
+          "example": 10
+        },
+        "softwareTrackLastModifiedDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The date when the software track was last edited or modified.",
+          "example": "2021-10-26"
+        },
+        "softwareTrackId": {
+          "type": "integer",
+          "description": "The unique identifier of the software track.",
+          "example": 339536
+        },
+        "softwareTrackDescription": {
+          "type": "string",
+          "description": "Software Track Description.",
+          "example": "Cisco Nexus 3000/9000 Series Switches"
+        },
+        "softwareTrackCompliantDeviceCount": {
+          "type": "integer",
+          "description": "Total number of devices in the Software Track that are running the standard recommended version.",
+          "example": 10
+        },
+        "softwareTrackComments": {
+          "type": "string",
+          "description": "Software Track recommendation and planning comments.",
+          "example": "Software Track comments"
+        },
+        "softwareTrackCandidateVersion": {
+          "type": "string",
+          "description": "The candidate/future recommended standard version for the Software Track.",
+          "example": "8.0(3)I4(6)"
+        },
+        "softwareType": {
+          "type": "string",
+          "description": "The Type of Software running on the device. Common values include IOS, IOS XR, IOS-XE, NX-OS, etc.",
+          "example": "IOS-XR"
+        },
+        "softwareTrackName": {
+          "type": "string",
+          "description": "The Software Track Name.",
+          "example": "IOX-XE"
+        },
+        "softwareTrackNonCompliantDeviceCount": {
+          "type": "integer",
+          "description": "Total number of devices in the Software Track that are not running the standard recommended version.",
+          "example": 10
+        },
+        "softwareTrackCompliancePercent": {
+          "type": "number",
+          "description": "The percent of devices running the standard recommended version.Formula is trackCompliantDevices/trackTotalDevices.",
+          "example": 90
+        },
+        "softwareTrackFlexibleCompliancePercent": {
+          "type": "number",
+          "description": "The percent of devices running the standard recommended version or one of the two previous recommended versions. Formula is (trackCompliantDevices+trackPrevCompliantDevices)/trackTotalDevices.",
+          "example": 95
+        },
+        "softwareTrackPrevious1PackageInstallationEnvelopeCriteria": {
+          "type": "string",
+          "description": "The Package Installation Envelope (PIE) matching criteria for the previous standard version for the Software Track. Valid values include: Require Exact Match, Ignore For Conformance, Match but ignore extras.",
+          "example": "Require Exact Match"
+        },
+        "softwareTrackPrevious1SoftwareMaintenanceUpdateCriteria": {
+          "type": "string",
+          "description": "The Software Maintenance Update (SMU) matching criteria for the previous standard version for the Software Track. Valid values include: Require Exact Match, Ignore For Conformance, and Match but ignore extras.",
+          "example": "Require Exact Match"
+        },
+        "softwareTrackPrevious2PackageInstallationEnvelopeCriteria": {
+          "type": "string",
+          "description": "The Package Installation Envelope (PIE) matching criteria for the second previous standard version for the Software Track. Valid values include: Require Exact Match, Ignore For Conformance, and Match but ignore extras.",
+          "example": "Require Exact Match"
+        },
+        "softwareTrackPrevious2SoftwareMaintenanceUpdateCriteria": {
+          "type": "string",
+          "description": "The Software Maintenance Update (SMU) matching criteria for the second previous standard version for the Software Track. Valid values include: Require Exact Match, Ignore For Conformance, and Match but ignore extras.",
+          "example": "Require Exact Match"
+        }
+      },
+      "type": "object"
+    },
+    "trackMembersModel": {
+      "properties": {
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "softwareTrackId": {
+          "type": "integer",
+          "description": "The unique identifier of the software track.",
+          "example": 339536
+        },
+        "softwareTrackStandardSoftwareMaintenanceUpdateCount": {
+          "type": "integer",
+          "description": "The number of Software Maintenance Updates (SMUs) in the Standard Recommendation for the track.",
+          "example": 0
+        },
+        "softwareTrackSoftwareMaintenanceUpdateMissingCount": {
+          "type": "integer",
+          "description": "The number of Software Maintenance Upgrades (SMUs) on the device that are missing and need to be added to match the standard recommended SMU list in the track.",
+          "example": 0
+        },
+        "softwareTrackSoftwareMaintenanceUpdateExtraCount": {
+          "type": "integer",
+          "description": "The number of Software Maintenance Upgrades (SMUs) on the device that are extra: these SMUs are in addition to the standard recommended SMU list in the track.",
+          "example": 0
+        },
+        "softwareTrackSoftwareMaintenanceUpdateCompliantCount": {
+          "type": "integer",
+          "description": "The number of Software Maintenance Upgrades (SMUs) on the device that are compliant to the standard recommended SMU list in the track.",
+          "example": 1
+        },
+        "softwareTrackSoftwareMaintenanceUpdateCompliance": {
+          "type": "string",
+          "description": "The status of the Software Maintenance Upgrade (SMU) conformance for the device. Valid values include: Conforming, Conforming With Extras, Non Conforming, Ignored for Conformance, and N/A - OS Version Non Conforming.",
+          "example": "Conforming"
+        },
+        "isSoftwareTrackCompliant": {
+          "type": "boolean",
+          "description": "Returns whether the device is compliant to the track standard recommended version.",
+          "example": true
+        },
+        "isSoftwareTrackFlexibleCompliant": {
+          "type": "boolean",
+          "description": "Returns whether the device is compliant to the standard version or one of the track's previous two recommended versions.",
+          "example": false
+        },
+        "softwareTrackName": {
+          "type": "string",
+          "description": "The Software Track Name.",
+          "example": "IOX-XE"
+        },
+        "softwareTrackPackageInstallationEnvelopeCompliance": {
+          "type": "string",
+          "description": "The status of Package Installation Envelope (PIE) conformance for the device. Valid values include: Conforming, Conforming With Extras, Non Conforming, Ignored for Conformance, and N/A - OS Version Non Conforming.",
+          "example": "Conforming"
+        },
+        "isSoftwareTrackPreviousCompliant": {
+          "type": "boolean",
+          "description": "Returns whether the device is compliant to one of the track's previous two recommended versions.",
+          "example": false
+        }
+      },
+      "type": "object"
+    },
+    "complianceModel": {
+      "properties": {
+        "softwareTrackId": {
+          "type": "integer",
+          "description": "The unique identifier of the software track.",
+          "example": 339536
+        },
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "softwareTrackName": {
+          "type": "string",
+          "description": "The Software Track Name.",
+          "example": "IOX-XE"
+        },
+        "softwareMaintenanceUpdatePackageInstallationEnvelopeType": {
+          "type": "string",
+          "description": "The status of the Software Maintenance Update (SMU) or Package Installation Envelope (PIE), which is either Active or Committed",
+          "example": "Active"
+        },
+        "softwareName": {
+          "type": "string",
+          "description": "The name of the software running on the network element. For System SW, the value is the Image Name. For Package Installation Envelope (PIE) it is the package name and for Software Maintenance Update (SMU) the SMU name.",
+          "example": "asr9k-p-4.2.3.CSCtz41749-1.0.0"
+        },
+        "softwareRole": {
+          "type": "string",
+          "description": "The role of the Software running on the Network Element. Values include SYSTEM, PKG, and SMU.",
+          "example": "SMU"
+        },
+        "softwareTrackDeviceSoftwareMaintenanceUpdatePIEAction": {
+          "type": "string",
+          "description": "Action to take for a specific Software Maintenance Update (SMU)/Package Installation Envelope (PIE) for a device: - \"Add\" means the SMU/PIE needs to be installed on the device to make it compliant. - \"Delete\" means the SMU/PIE needs to be removed from the device to make it compliant. - \"None\" means no action needs to be taken.",
+          "example": "Add"
+        },
+        "softwareTrackDeviceSoftwareMaintenanceUpdatePIECompliance": {
+          "type": "string",
+          "description": "Compliance status for a specific Software Maintenance Update (SMU)/PIE for a device:  - \"Compliant\" means the SMU/PIE matches the recommendation. - \"Non-Compliant\" means the SMU/PIE does not match the recommended list. See the action field for steps to take.  - \"Extra\" means the SMU/PIE isn't part of the recommended list, but that is okay  - because exact match isn't being used.",
+          "example": "Compliant"
+        }
+      },
+      "type": "object"
+    },
+    "recommendationsModel": {
+      "properties": {
+        "softwareTrackRecommendationHistory": {
+          "type": "string",
+          "description": "This field indicates recommendation history value of the track Software Maintenance Updates (SMUs) / Package Installation Envelopes (PIEs):  - \"Current\" is for the standard recommendation and should be used in most cases.  - \"Previous1\" is for the previous recommendation. \"Previous2\" is for the 2nd previous recommendation.  - \"Candidate\" is for the future candidate recommendation.",
+          "example": "Current"
+        },
+        "softwareTrackName": {
+          "type": "string",
+          "description": "The Software Track Name.",
+          "example": "IOX-XE"
+        },
+        "softwareTrackId": {
+          "type": "integer",
+          "description": "The unique identifier of the software track.",
+          "example": 339536
+        },
+        "softwareRole": {
+          "type": "string",
+          "description": "The role of the Software running on the Network Element. Values include SYSTEM, PKG, and SMU.",
+          "example": "SMU"
+        },
+        "softwareName": {
+          "type": "string",
+          "description": "The name of the software running on the network element. For System SW, the value is the Image Name. For Package Installation Envelope (PIE) it is the package name and for Software Maintenance Update (SMU) the SMU name.",
+          "example": "asr9k-p-4.2.3.CSCtz41749-1.0.0"
+        }
+      },
+      "type": "object"
+    },
+    "latestResetModel": {
+      "properties": {
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "The Network Element Name of the device.",
+          "example": "router%"
+        },
+        "deviceIp": {
+          "type": "string",
+          "description": "The management IP address of the device.",
+          "example": "172.21.1.1"
+        },
+        "productFamily": {
+          "type": "string",
+          "description": "The Cisco Product Family of the hardware.",
+          "example": "Cisco Catalyst 3560-E Series Switches"
+        },
+        "productId": {
+          "type": "string",
+          "description": "The Cisco Product ID (PID) of the hardware.",
+          "example": "NCS-5501"
+        },
+        "softwareType": {
+          "type": "string",
+          "description": "The Type of Software running on the device. Common values include IOS, IOS XR, IOS-XE, NX-OS, etc.",
+          "example": "IOS-XR"
+        },
+        "softwareVersion": {
+          "type": "string",
+          "description": "The installed software version.",
+          "example": "15.1(4)M4"
+        },
+        "lastResetTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of the last reset of the device as reported by the show version command.",
+          "example": "2021-05-07T21:23:11"
+        },
+        "resetReason": {
+          "type": "string",
+          "description": "The reason for the last system reset as reported in the show version output.",
+          "example": "Reset Requested by CLI command reload"
+        },
+        "resetType": {
+          "type": "string",
+          "description": "Type of event that occurred: \"crash\" or \"reload\"",
+          "example": "reset",
+          "maxLength": 5
+        },
+        "inventoryTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the collector last successfully collected inventory from the device.",
+          "example": "2022-01-16T21:20:35"
+        }
+      },
+      "type": "object"
+    },
+    "resetHistoryModel": {
+      "properties": {
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "The Network Element Name of the device.",
+          "example": "router%"
+        },
+        "deviceIp": {
+          "type": "string",
+          "description": "The management IP address of the device.",
+          "example": "172.21.1.1"
+        },
+        "productFamily": {
+          "type": "string",
+          "description": "The Cisco Product Family of the hardware.",
+          "example": "Cisco Catalyst 3560-E Series Switches"
+        },
+        "productId": {
+          "type": "string",
+          "description": "The Cisco Product ID (PID) of the hardware.",
+          "example": "NCS-5501"
+        },
+        "resetDetails": {
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfRiskMitigationSummary": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/riskMitigationSummary"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "riskMitigationSummary": {
+      "properties": {
+        "highRiskDeviceCount": {
+          "type": "integer",
+          "description": "Count of devices with high predicted risk of crash",
+          "default": 0,
+          "example": 4
+        },
+        "mediumRiskDeviceCount": {
+          "type": "integer",
+          "description": "Count of devices with medium predicted risk of crash",
+          "default": 0,
+          "example": 6
+        },
+        "lowRiskDeviceCount": {
+          "type": "integer",
+          "description": "Count of devices with low predicted risk of crash",
+          "default": 0,
+          "example": 2
+        },
+        "productFamily": {
+          "type": "string",
+          "description": "The Cisco Product Family of the hardware.",
+          "example": "Cisco Catalyst 3560-E Series Switches"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfRiskMitigationDetails": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/riskMitigationDetails"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "riskMitigationDetails": {
+      "properties": {
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "The Network Element Name of the device.",
+          "example": "router%"
+        },
+        "deviceIp": {
+          "type": "string",
+          "description": "The management IP address of the device.",
+          "example": "172.21.1.1"
+        },
+        "productId": {
+          "type": "string",
+          "description": "The Cisco Product ID (PID) of the hardware.",
+          "example": "NCS-5501"
+        },
+        "productFamily": {
+          "type": "string",
+          "description": "The Cisco Product Family of the hardware.",
+          "example": "Cisco Catalyst 3560-E Series Switches"
+        },
+        "softwareVersion": {
+          "type": "string",
+          "description": "The installed software version.",
+          "example": "15.1(4)M4"
+        },
+        "softwareType": {
+          "type": "string",
+          "description": "The Type of Software running on the device. Common values include IOS, IOS XR, IOS-XE, NX-OS, etc.",
+          "example": "IOS-XR"
+        },
+        "riskScore": {
+          "type": "number",
+          "description": "Risk score",
+          "example": 26.13
+        },
+        "riskCategory": {
+          "type": "string",
+          "description": "Category of the predicted risk. Possible values are High, Medium and Low",
+          "example": "Medium",
+          "maxLength": 100
+        }
+      },
+      "type": "object"
+    },
+    "groups": {
+      "properties": {
+        "groupId": {
+          "type": "integer",
+          "description": "The unique identifier of the group.",
+          "example": 357989
+        },
+        "groupName": {
+          "type": "string",
+          "description": "The name of the group.",
+          "default": "",
+          "example": "Storage"
+        },
+        "groupDescription": {
+          "type": "string",
+          "description": "The description of the group.",
+          "default": "",
+          "example": "Avoids using default group"
+        },
+        "groupTotalDeviceCount": {
+          "type": "integer",
+          "description": "The number of unique matching devices in summary APIs. For Custom Config and BP, this is the number of devices with exceptions. For Feature, this is the number of devices with the feature match. For tracks, this is the total number of devices in the track.For groups, this denotes number of devices in a group",
+          "example": ""
+        }
+      },
+      "type": "object"
+    },
+    "groupMembers": {
+      "properties": {
+        "deviceId": {
+          "type": "integer",
+          "description": "The unique identifier for a device.",
+          "example": 22345640
+        },
+        "groupId": {
+          "type": "integer",
+          "description": "The unique identifier of the group.",
+          "example": 357989
+        },
+        "groupName": {
+          "type": "string",
+          "description": "The name of the group.",
+          "default": "",
+          "example": "Storage"
+        }
+      },
+      "type": "object"
+    },
+    "pageOfSerials": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/serialNumberDetails"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "serialNumberDetails": {
+      "properties": {
+        "baseProductIdList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/contractBasePID"
+          }
+        },
+        "contractSiteCustomerName": {
+          "type": "string",
+          "description": "Customer name associated to the contract install site.",
+          "example": "CISCO SYSTEMS, INC.",
+          "maxLength": 100
+        },
+        "contractSiteAddress": {
+          "type": "string",
+          "description": "Address field for the contract install site.",
+          "example": "170 WEST TASMAN DR.",
+          "maxLength": 100
+        },
+        "contractSiteCity": {
+          "type": "string",
+          "description": "City field for the contract install site.",
+          "example": "SAN JOSE.",
+          "maxLength": 20
+        },
+        "contractSiteStateProvince": {
+          "type": "string",
+          "description": "State field for the contract install site.",
+          "example": "CA.",
+          "maxLength": 20
+        },
+        "contractSiteCountry": {
+          "type": "string",
+          "description": "Country field for the contract install site.",
+          "example": "US.",
+          "maxLength": 20
+        },
+        "coveredProductLineEndDate": {
+          "type": "string",
+          "format": "date",
+          "description": "End date of the covered product line in the following format: YYYY-MM-DD.",
+          "example": "2025-01-01"
+        },
+        "isCovered": {
+          "type": "boolean",
+          "description": "Indicates whether the specified serial number is covered by a service contract; one of the following values: True or False. If the serial number is covered by a service contract, the value is True.",
+          "default": "False",
+          "example": "True"
+        },
+        "orderableProductIdList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderableproductid"
+          }
+        },
+        "parentSerialNumber": {
+          "type": "string",
+          "description": "Parent serial number. The value of parent serial number will be the same as the value for serial number if the item is a MAJOR item.",
+          "example": "FCH1234V1AM",
+          "maxLength": 40
+        },
+        "serviceContractNumber": {
+          "type": "string",
+          "description": "Service contract number",
+          "example": "1234567, 2345678",
+          "maxLength": 200
+        },
+        "serviceLineDescription": {
+          "type": "string",
+          "description": "Description of the service type",
+          "example": "SMARTnet 24x7x4",
+          "maxLength": 20
+        },
+        "serialNumber": {
+          "type": "string",
+          "description": "The serial number of the hardware.",
+          "example": "IMC1932004M"
+        },
+        "warrantyEndDate": {
+          "type": "string",
+          "format": "date",
+          "description": "End date of the warranty for the specified serial number in the following format: YYYY-MM-DD",
+          "example": "2022-01-01"
+        },
+        "warrantyType": {
+          "type": "string",
+          "description": "Warranty service type",
+          "example": "WARR-3YR-HW-90D-SW.",
+          "maxLength": 20
+        },
+        "warrantyTypeDescription": {
+          "type": "string",
+          "description": "Link to the description of the warranty type.",
+          "example": "http://www.cisco.com/go/warranty",
+          "maxLength": 100
+        }
+      },
+      "type": "object"
+    },
+    "contractBasePID": {
+      "properties": {
+        "baseProductId": {
+          "type": "string",
+          "description": "Base or manufacturing product identifiers related to the specified serial number.",
+          "example": "",
+          "maxLength": 20
+        }
+      },
+      "type": "object"
+    },
+    "orderableproductid": {
+      "properties": {
+        "itemDescription": {
+          "type": "string",
+          "description": "Orderable product description for the specified serial number.",
+          "example": "10GBASE-SR SFP Module",
+          "maxLength": 123
+        },
+        "itemPosition": {
+          "type": "string",
+          "description": "Orderable product position for the specified serial number.",
+          "example": "S",
+          "maxLength": 20
+        },
+        "itemType": {
+          "type": "string",
+          "description": "Orderable product type for the specified serial number.",
+          "example": "CARD",
+          "maxLength": 20
+        },
+        "orderableProductId": {
+          "type": "string",
+          "description": "Orderable product identifier for the specified serial number.",
+          "default": "",
+          "example": "SFP-10G-SR=",
+          "maxLength": 20
+        },
+        "pillarCode": {
+          "type": "string",
+          "description": "Specifies the contract service line for the item specified by orderable_pid; one of the following values: - 1 = TAC Support- 2 = Hardware replacement - 3 = Software Support- A single service line can be associated to multiple pillars.",
+          "default": "",
+          "example": "1,2,3",
+          "maxLength": 20
+        }
+      },
+      "type": "object"
+    },
+    "pageOfCollectors": {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/collectorModel"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "collectorModel": {
+      "properties": {
+        "lastUploadTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of the last completed collection for this collector",
+          "example": "2022-01-16T21:20:35"
+        },
+        "expectedUploadInterval": {
+          "type": "integer",
+          "description": "The number of days expected between full collector uploads to Cisco.",
+          "example": 7
+        },
+        "collectorVersion": {
+          "type": "string",
+          "description": "Collector version.",
+          "example": "2.8.1.8"
+        },
+        "applianceId": {
+          "type": "string",
+          "description": "The unique identifier of the collector appliance.",
+          "example": "CSP0123456789"
+        },
+        "collectorStatus": {
+          "type": "string",
+          "description": "Collector status.",
+          "example": "Cisco Testing"
+        },
+        "collectorName": {
+          "type": "string",
+          "description": "The collector identifier, which can be either a 4four-character collectorId or the applianceId.",
+          "example": "bcs1"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "responses": {
+    "ParseError": {
+      "description": "When a mask can't be parsed"
+    },
+    "MaskError": {
+      "description": "When any error occurs on mask"
+    }
+  },
+  "host": "api.bcs-cway.com"
+}

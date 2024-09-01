@@ -1,0 +1,5 @@
+*
+!app.conf
+!web.conf
+!restmap.conf
+!.gitignore

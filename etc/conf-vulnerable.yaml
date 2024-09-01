@@ -1,0 +1,47 @@
+endpoints:
+  list:
+    - endpoint: productAlerts/securityAdvisories
+      filters:
+        - attribute: matchConfidence
+          value: Vulnerable
+      addendum: ''  #@ This is an empty string - do not remove this or it will be set to None and break
+    - endpoint: productAlerts/securityAdvisories
+      filters:
+        - attribute: matchConfidence
+          value: Potentially Vulnerable
+      addendum: ''  #@ This is an empty string - do not remove this or it will be set to None and break
+    - endpoint: inventory/devices
+    - endpoint: inventory/assets
+    - endpoint: configBestPractices/details
+    - endpoint: configBestPractices/rules
+    - endpoint: configBestPractices/rulesReferences
+    - endpoint: configBestPractices/summary
+    - endpoint: contract/serials
+    - endpoint: deviceGroups/groups
+    - endpoint: deviceGroups/groupMembers
+    - endpoint: deviceReset/lastResetDetails
+    - endpoint: deviceReset/resetCount
+    - endpoint: deviceReset/resetHistory
+    - endpoint: productAlerts/fieldNotices
+    - endpoint: productAlerts/fieldNoticeBulletins
+    - endpoint: productAlerts/hardwareEndOfLife
+    - endpoint: productAlerts/hardwareEndOfLifeBulletins
+    - endpoint: productAlerts/securityAdvisoryBulletins
+    - endpoint: productAlerts/softwareAdvisoryAlerts
+    - endpoint: productAlerts/softwareEndOfLife
+    - endpoint: productAlerts/softwareEndOfLifeBulletins
+    - endpoint: riskMitigation/details
+    - endpoint: riskMitigation/summary
+    - endpoint: softwareTrack/members
+    - endpoint: softwareTrack/softwareMaintenanceUpgradeCompliance
+    - endpoint: softwareTrack/softwareMaintenanceUpgradeRecommendations
+    - endpoint: softwareTrack/summary
+    - endpoint: syslog/daily
+    - endpoint: placeInNetwork/details
+    - endpoint: unidentifiedInventory/details
+    - endpoint: unidentifiedInventory/summary
+    - endpoint: collectors
+timeformat: "%Y-%m-%dT%H:%M:%S"
+directory:
+  csv: lookups
+  json: data
